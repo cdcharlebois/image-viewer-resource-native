@@ -1,0 +1,34 @@
+{
+  "name": "imageviewerresource",
+  "widgetName": "ImageViewerResource",
+  "version": "1.0.0",
+  "description": "View an image from your xcode or android studio bundle",
+  "copyright": "2020 Mendix Technology BV",
+  "author": "Conner Charlebois",
+  "engines": {
+    "node": ">=12"
+  },
+  "config": {
+    "projectPath": "/Volumes/[C] Windows 10/MxProjects/NativeReference9mts-main/"
+  },
+  "packagePath": "mendix",
+  "scripts": {
+    "start": "pluggable-widgets-tools start:native",
+    "build": "pluggable-widgets-tools build:native",
+    "lint": "pluggable-widgets-tools lint",
+    "lint:fix": "pluggable-widgets-tools lint:fix",
+    "prerelease": "npm run lint",
+    "release": "pluggable-widgets-tools release:native"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Conner Charlebois/imageviewerresource/issues"
+  },
+  "devDependencies": {
+    "@mendix/pluggable-widgets-tools": "^9.0.0"
+  },
+  "dependencies": {
+    "react-native-fast-image": "^8.5.11",
+    "react-native-fs": "^2.20.0"
+  }
+}

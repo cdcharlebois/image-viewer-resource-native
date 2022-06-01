@@ -1,0 +1,5 @@
+dist/
+node_modules/
+/Volumes/[C] Windows 10/MxProjects/NativeReference9mts-main/
+*.log
+.env
