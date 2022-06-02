@@ -1,5 +1,5 @@
 import { createElement } from "react";
-import { Platform, View } from "react-native";
+import { Platform } from "react-native";
 import FastImage from "react-native-fast-image";
 import RNFS from "react-native-fs";
 
@@ -11,17 +11,15 @@ function removeExtension(uri) {
 
 function getSource(uri) {
     if (Platform.OS === "android") {
-        return { uri: removeExtension(uri) };
+        return { uri: removeExtension(uri).replace(/\//, "_").toLowerCase() };
     } else {
         return { uri: `${RNFS.MainBundlePath}/${uri}` };
     }
 }
 
-export const ImageViewerResource = ({ uri }) => {
+export const ImageViewerResource = ({ uri, style }) => {
     const source = getSource(uri);
     return (
-        <View>
-            <FastImage source={source} style={{ height: 100, width: 100 }} />
-        </View>
+        <FastImage source={source} style={style} resizeMode={FastImage.resizeMode.contain} />
     );
 };

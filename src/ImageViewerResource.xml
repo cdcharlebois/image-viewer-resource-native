@@ -10,7 +10,7 @@
         <propertyGroup caption="General">
             <property key="uri" type="string" required="false">
                 <caption>Resource Name</caption>
-                <description>name of the resource</description>
+                <description>name of the resource. For iOS: this is the relative path to the resource (including file extension) E.g. MyAssets/mygif.gif. For Android, this is the name of the file in the app/src/main/res/drawable folder. On Android only, values entered here will be converted to lowercase and '/' characters will be replaced with '_'s. E.g. myassets_mygif.gif. See the documentation for more info.</description>
             </property>
         </propertyGroup>
     </properties>
