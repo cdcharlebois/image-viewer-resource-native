@@ -1,22 +1,27 @@
-import { Component, createElement } from "react";
-import {Image, View, Platform} from "react-native";
+import { createElement } from "react";
+import { Platform, View } from "react-native";
 import FastImage from "react-native-fast-image";
 import RNFS from "react-native-fs";
 
 // Image can access the asset catalog, FastImage needs a URI
 
-export const ImageViewerResource = ({uri}) => {
-    const getBundleDirectory = () => {
-        return Platform.OS === "ios" ? RNFS.MainBundlePath : RNFS.DocumentDirectoryPath
+function removeExtension(uri) {
+    return uri.replace(/\.[^/.]+$/, "");
+}
+
+function getSource(uri) {
+    if (Platform.OS === "android") {
+        return { uri: removeExtension(uri) };
+    } else {
+        return { uri: `${RNFS.MainBundlePath}/${uri}` };
     }
-    // const definitelyTheUri = Image.resolveAssetSource({uri: uri}).uri;
-    // console.info(getBundleDirectory());
-    const filePath = `${getBundleDirectory()}/${uri}`
-    console.info(filePath);
-    const source = {uri : filePath}
+}
+
+export const ImageViewerResource = ({ uri }) => {
+    const source = getSource(uri);
     return (
         <View>
-            <Image source={source} style={{height: 100, width: 100}}/>
+            <FastImage source={source} style={{ height: 100, width: 100 }} />
         </View>
-    )
-}
+    );
+};
